@@ -22,7 +22,7 @@ import com.brainrot.italiano.ui.viewmodel.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class QuizFragment : Fragment() {
+class QuizFragment1 : Fragment() {
 
     private var _binding: FragmentQuizBinding? = null
     private val binding get() = _binding!!
