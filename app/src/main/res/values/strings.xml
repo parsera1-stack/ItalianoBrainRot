@@ -3,9 +3,10 @@
     <string name="app_name">Italiano Brain Rot</string>
 
     <!-- Уровни -->
-    <string name="level_1">Уровень 1: Тест</string>
-    <string name="level_2">Уровень 2: Письменный</string>
-    <string name="level_3">Уровень 3: Смешанный</string>
+    <string name="level_1_name">Тестирование</string>
+    <string name="level_2_name">Письменный ввод</string>
+    <string name="level_3_name">Смешанный тип</string>
+    <string name="level_4_name">Тест на орфографию</string>
 
     <!-- Кнопки -->
     <string name="parent_button">Родитель</string>
