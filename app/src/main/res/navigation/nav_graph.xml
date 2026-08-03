@@ -47,7 +47,7 @@
     <fragment
     android:id="@+id/spellingQuizFragment"
     android:name="com.brainrot.italiano.ui.screens.spelling.SpellingQuizFragment"
-    android:label="Тест орфографии"
+    android:label="Тест на орфографию"
     tools:layout="@layout/fragment_spelling_quiz" />
 
 </navigation>
