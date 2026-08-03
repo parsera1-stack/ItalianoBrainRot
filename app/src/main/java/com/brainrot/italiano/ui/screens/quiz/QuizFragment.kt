@@ -64,8 +64,8 @@ class QuizFragment : Fragment() {
             when (state) {
                 is QuizState.Loading -> showLoading()
                 is QuizState.Question -> showQuestion(state.question)
-                is QuizState.Correct -> showCorrect()
-                is QuizState.Wrong -> showWrong(state.correctAnswer)
+                is QuizState.Correct -> showCorrect(state.question)
+                is QuizState.Wrong -> showWrong(state.question, state.correctAnswer)
                 is QuizState.Finished -> showFinished()
             }
         }
@@ -136,23 +136,17 @@ class QuizFragment : Fragment() {
         }
     }
 
-    private fun showCorrect() {
+    private fun showCorrect(question: QuizQuestion) {
         binding.btnNext.visibility = View.VISIBLE
-        val currentQuestion = (viewModel.quizState.value as? QuizState.Question)?.question
-        currentQuestion?.let {
-            if (it.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
-                highlightCorrectAnswer(it.correctAnswer)
-            }
+        if (question.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
+            highlightCorrectAnswer(question.correctAnswer)
         }
     }
 
-    private fun showWrong(correctAnswer: String) {
+    private fun showWrong(question: QuizQuestion, correctAnswer: String) {
         binding.btnNext.visibility = View.VISIBLE
-        val currentQuestion = (viewModel.quizState.value as? QuizState.Question)?.question
-        currentQuestion?.let {
-            if (it.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
-                highlightWrongAnswer(it.correctAnswer)
-            }
+        if (question.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
+            highlightWrongAnswer(question.correctAnswer)
         }
         binding.tvQuestion.text = "Неправильно! Правильный ответ: $correctAnswer"
     }
@@ -194,7 +188,7 @@ class QuizFragment : Fragment() {
     private fun showFinished() {
         hideKeyboard()
         binding.contentLayout.visibility = View.VISIBLE
-        binding.tvQuestion.text = "Все слова выучены! 🎉"
+        binding.tvQuestion.text = "Все слова выучены!"
         binding.layoutOptions.visibility = View.GONE
         binding.tilAnswer.visibility = View.GONE
         binding.btnSubmit.visibility = View.GONE
