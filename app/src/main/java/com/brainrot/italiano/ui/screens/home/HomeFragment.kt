@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
         }
 
         val etPin = EditText(requireContext()).apply {
-            hint = "Введите PIN (5005)"
+            hint = "Введите PIN"
             inputType = android.text.InputType.TYPE_CLASS_NUMBER or android.text.InputType.TYPE_NUMBER_VARIATION_PASSWORD
         }
 
