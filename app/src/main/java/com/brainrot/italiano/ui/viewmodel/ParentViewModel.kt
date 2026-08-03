@@ -70,9 +70,6 @@ class ParentViewModel @Inject constructor(
         }
     }
 
-    /**
-     * Экспорт слов и статистики в CSV
-     */
     fun exportToCsv(context: Context, uri: Uri) {
         viewModelScope.launch {
             val result = unifiedImportExport.exportToCsv(context, uri)
@@ -84,9 +81,6 @@ class ParentViewModel @Inject constructor(
         }
     }
 
-    /**
-     * Импорт слов и статистики из CSV
-     */
     fun importFromCsv(context: Context, uri: Uri) {
         viewModelScope.launch {
             val result = unifiedImportExport.importFromCsv(context, uri)
