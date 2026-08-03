@@ -81,20 +81,9 @@ class HomeFragment : Fragment() {
             .setPositiveButton("Войти") { _, _ ->
                 val pin = etPin.text.toString()
                 if (pin == "5005") {
-                    try {
-                        findNavController().navigate(
-                            R.id.action_home_to_parent
-                        )
-                    } catch (e: Exception) {
-                        // Fallback: try alternative action name
-                        try {
-                            findNavController().navigate(
-                                R.id.action_homeFragment_to_parentFragment
-                            )
-                        } catch (e2: Exception) {
-                            Toast.makeText(requireContext(), "Ошибка навигации: проверьте nav_graph.xml", Toast.LENGTH_LONG).show()
-                        }
-                    }
+                    findNavController().navigate(
+                        R.id.action_home_to_parent
+                    )
                 } else {
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle("Ошибка")
