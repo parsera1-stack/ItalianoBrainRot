@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.brainrot.italiano.R
@@ -80,9 +81,20 @@ class HomeFragment : Fragment() {
             .setPositiveButton("Войти") { _, _ ->
                 val pin = etPin.text.toString()
                 if (pin == "5005") {
-                    findNavController().navigate(
-                        R.id.action_home_to_parent
-                    )
+                    try {
+                        findNavController().navigate(
+                            R.id.action_home_to_parent
+                        )
+                    } catch (e: Exception) {
+                        // Fallback: try alternative action name
+                        try {
+                            findNavController().navigate(
+                                R.id.action_homeFragment_to_parentFragment
+                            )
+                        } catch (e2: Exception) {
+                            Toast.makeText(requireContext(), "Ошибка навигации: проверьте nav_graph.xml", Toast.LENGTH_LONG).show()
+                        }
+                    }
                 } else {
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle("Ошибка")
