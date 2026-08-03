@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
             )
         }
 
-        binding.btnLevel4.setOnClickListener {
+        binding.cardLevel4.setOnClickListener {
             findNavController().navigate(
                 R.id.action_homeFragment_to_spellingQuizFragment
             )
