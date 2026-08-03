@@ -6,7 +6,7 @@
     <string name="level_1_name">Тестирование</string>
     <string name="level_2_name">Письменный ввод</string>
     <string name="level_3_name">Смешанный тип</string>
-    <string name="level_4_name">Тест на орфографию</string>
+    <string name="level_4_name">Тест орфографии</string>
 
     <!-- Кнопки -->
     <string name="parent_button">Родитель</string>
