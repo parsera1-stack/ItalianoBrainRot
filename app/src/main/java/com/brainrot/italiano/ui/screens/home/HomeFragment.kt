@@ -29,23 +29,33 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.cardLevel1.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_quizFragment)
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeToQuiz(level = 1)
+            )
         }
 
         binding.cardLevel2.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_quizFragment)
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeToQuiz(level = 2)
+            )
         }
 
         binding.cardLevel3.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_quizFragment)
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeToQuiz(level = 3)
+            )
         }
 
         binding.btnLevel4.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_spellingQuizFragment)
+            findNavController().navigate(
+                R.id.action_homeFragment_to_spellingQuizFragment
+            )
         }
 
         binding.btnParent.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_parentFragment)
+            findNavController().navigate(
+                R.id.action_home_to_parent
+            )
         }
     }
 
