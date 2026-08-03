@@ -86,7 +86,8 @@ class QuizFragment : Fragment() {
         binding.btnNext.visibility = View.GONE
         resetOptions()
 
-        binding.tvQuestion.text = "Как перевести: ${question.questionText}?"
+        // Убрана фраза "Как перевести:"
+        binding.tvQuestion.text = question.questionText
 
         if (question.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
             showMultipleChoice(question)
@@ -148,7 +149,7 @@ class QuizFragment : Fragment() {
         if (question.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
             highlightWrongAnswer(question.correctAnswer)
         }
-        binding.tvQuestion.text = "Неправильно! Правильный ответ: $correctAnswer"
+        // Убрано сообщение об ошибке - только цветные кнопки как в уровне 4
     }
 
     private fun highlightCorrectAnswer(correctAnswer: String) {
