@@ -64,8 +64,8 @@ class QuizFragment : Fragment() {
             when (state) {
                 is QuizState.Loading -> showLoading()
                 is QuizState.Question -> showQuestion(state.question)
-                is QuizState.Correct -> showCorrect(state.question)
-                is QuizState.Wrong -> showWrong(state.question, state.correctAnswer)
+                is QuizState.Correct -> showCorrect()
+                is QuizState.Wrong -> showWrong(state.correctAnswer)
                 is QuizState.Finished -> showFinished()
             }
         }
@@ -136,17 +136,23 @@ class QuizFragment : Fragment() {
         }
     }
 
-    private fun showCorrect(question: QuizQuestion) {
+    private fun showCorrect() {
         binding.btnNext.visibility = View.VISIBLE
-        if (question.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
-            highlightCorrectAnswer(question.correctAnswer)
+        val currentQuestion = (viewModel.quizState.value as? QuizState.Question)?.question
+        currentQuestion?.let {
+            if (it.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
+                highlightCorrectAnswer(it.correctAnswer)
+            }
         }
     }
 
-    private fun showWrong(question: QuizQuestion, correctAnswer: String) {
+    private fun showWrong(correctAnswer: String) {
         binding.btnNext.visibility = View.VISIBLE
-        if (question.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
-            highlightWrongAnswer(question.correctAnswer)
+        val currentQuestion = (viewModel.quizState.value as? QuizState.Question)?.question
+        currentQuestion?.let {
+            if (it.questionType == com.brainrot.italiano.domain.model.QuestionType.MULTIPLE_CHOICE) {
+                highlightWrongAnswer(it.correctAnswer)
+            }
         }
         binding.tvQuestion.text = "Неправильно! Правильный ответ: $correctAnswer"
     }
