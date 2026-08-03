@@ -71,9 +71,6 @@ class SpellingQuizViewModel @Inject constructor(
         _feedback.value = null
     }
 
-    /**
-     * Нормализация ответа: нижний регистр, без пробелов, без артиклей
-     */
     private fun normalizeAnswer(answer: String): String {
         return answer
             .lowercase()
