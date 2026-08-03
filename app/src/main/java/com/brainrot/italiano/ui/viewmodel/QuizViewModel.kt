@@ -15,8 +15,8 @@ import javax.inject.Inject
 sealed class QuizState {
     object Loading : QuizState()
     data class Question(val question: QuizQuestion, val character: Character) : QuizState()
-    data class Correct(val character: Character) : QuizState()
-    data class Wrong(val character: Character, val correctAnswer: String) : QuizState()
+    data class Correct(val question: QuizQuestion, val character: Character) : QuizState()
+    data class Wrong(val question: QuizQuestion, val correctAnswer: String, val character: Character) : QuizState()
     object Finished : QuizState()
 }
 
@@ -74,9 +74,9 @@ class QuizViewModel @Inject constructor(
             )
 
             if (isCorrect) {
-                _quizState.value = QuizState.Correct(character)
+                _quizState.value = QuizState.Correct(question, character)
             } else {
-                _quizState.value = QuizState.Wrong(character, question.correctAnswer)
+                _quizState.value = QuizState.Wrong(question, question.correctAnswer, character)
             }
         }
     }
