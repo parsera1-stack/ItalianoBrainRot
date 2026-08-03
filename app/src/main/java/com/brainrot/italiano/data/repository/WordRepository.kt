@@ -68,17 +68,10 @@ class WordRepository @Inject constructor(
         return wordDao.getRandomActiveWords(limit).map { it.toDomain() }
     }
 
-    /**
-     * Получает слова с приоритетом по статистике показов.
-     * Слова с меньшим количеством показов показываются чаще.
-     */
     suspend fun getRandomActiveWordsByPriority(limit: Int): List<Word> {
         return wordDao.getRandomActiveWordsByPriority(limit).map { it.toDomain() }
     }
 
-    /**
-     * Получает дистракторы с приоритетом по статистике показов.
-     */
     suspend fun getRandomDistractorsByPriority(excludeId: Long, limit: Int): List<Word> {
         return wordDao.getRandomDistractorsByPriority(excludeId, limit).map { it.toDomain() }
     }
@@ -108,7 +101,6 @@ class WordRepository @Inject constructor(
 
     suspend fun getWordsCount(): Int = wordDao.getWordsCount()
 
-    // Mappers
     private fun WordEntity.toDomain(): Word = Word(
         id = id,
         russian = russian,
@@ -135,16 +127,10 @@ class WordRepository @Inject constructor(
         lastResultCorrect = lastResultCorrect
     )
 
-    /**
-     * Удаляет артикли из начала строки
-     */
     private fun String.trimArticle(): String {
         return this.replace(Regex("^(a |an |the |A |An |The )"), "")
     }
 
-    /**
-     * Нормализует ё → е для хранения в БД
-     */
     private fun String.normalizeYo(): String {
         return this.replace('ё', 'е').replace('Ё', 'Е')
     }
