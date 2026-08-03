@@ -37,7 +37,6 @@ class WordsAdapter(
             tvRussian.text = word.russian
             tvEnglish.text = word.english
 
-            // Сначала сбрасываем слушатель, потом меняем состояние
             cbLearned.setOnCheckedChangeListener(null)
             cbLearned.isChecked = word.isLearned
 
