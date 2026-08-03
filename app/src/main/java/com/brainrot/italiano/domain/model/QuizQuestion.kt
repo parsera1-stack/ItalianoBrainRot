@@ -5,9 +5,9 @@ package com.brainrot.italiano.domain.model
  */
 data class QuizQuestion(
     val word: Word,
-    val questionText: String,        // Текст вопроса (слово для перевода)
-    val correctAnswer: String,       // Правильный ответ
-    val options: List<String> = emptyList(), // Варианты для уровня 1
+    val questionText: String,
+    val correctAnswer: String,
+    val options: List<String> = emptyList(),
     val questionDirection: QuestionDirection,
     val questionType: QuestionType
 )
@@ -18,8 +18,8 @@ enum class QuestionDirection {
 }
 
 enum class QuestionType {
-    MULTIPLE_CHOICE,    // Уровень 1 - выбор из 4 вариантов
-    WRITTEN,           // Уровень 2 - письменный ввод
-    MIXED,        // 3-й уровень: аудирование
-    SPELLING             // Уровень 3 - смешанный
+    MULTIPLE_CHOICE,
+    WRITTEN,
+    MIXED,
+    SPELLING
 }
